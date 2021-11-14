@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-class Main.page extends Component {
+class MainPage extends Component {
   constructor(props){
     super(props);
   }
@@ -13,7 +13,7 @@ class Main.page extends Component {
     )
   }
 }
-Main.page.propTypes = {
+MainPage.propTypes = {
 }
 
-export default Main.page;
+export default MainPage;

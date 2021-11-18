@@ -1,19 +1,16 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { PageHeader } from 'antd';
+import 'antd/dist/antd.css';
 
-class Header extends Component {
-  constructor(props){
-    super(props);
-  }
-  render(){
-    return (
-      <div className="Header">
-    
-      </div>
-    )
-  }
-}
-Header.propTypes = {
+const Header = () => {
+  return (
+    <PageHeader
+    className="site-page-header"
+    onBack={() => null}
+    title="My Training App"
+    subTitle="Connexion"
+  />
+  );
 }
 
 export default Header;

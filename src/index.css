@@ -17,8 +17,8 @@ code {
 }
 
 .form-style > form {
-  margin: auto;
-  display: table;
-  text-align: center;
+  margin-right: 25%;
+  margin-left: 25%;
+  display: block;
   padding: 30px;
 }

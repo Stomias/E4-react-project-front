@@ -46,10 +46,29 @@ const tailFormItemLayout = {
 const Inscription = () => {
   const [form] = Form.useForm();
 
-    const onFinish = (values) => {
-      console.log('Received values of form: ', values);
-      console.log()
-    };
+  const onFinish = async (register) => {
+    console.log('Received values of form: ', register);
+    //console.log(register.email);
+    
+    // Register new user
+    const response = await fetch('http://localhost:3001/users/register', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({identifiant: register.email, motDePasse: register.confirm, nom: register.name, 
+        prenom: register.surname, age: register.age, taille: register.height, sexe: register.sexe, poids: register.weight})
+    });
+
+    if (await response.status !== 201) {
+      // You can do your error handling here
+      const erreur = await response.json()
+      console.log(erreur)
+      window.alert(JSON.stringify(erreur.message));
+    } else {
+        // Call the .json() method on your response to get your JSON data
+        console.log(await response.json());
+    }
+  };
+
 
     return (
       <Form
@@ -216,9 +235,6 @@ const Inscription = () => {
           ]}
           {...tailFormItemLayout}
         >
-          <Checkbox>
-            {/* J'ai lu les <a href="">termes et conditions</a> */}
-          </Checkbox>
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">

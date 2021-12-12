@@ -35,7 +35,7 @@ const TrainingList = () => {
     dataSource={trainings}
     renderItem={training => (
       <List.Item>
-        <Card title={training.libelleEntrainement}>{training.duree} minutes</Card>
+        <Card title={training.libelleEntrainement} onClick={() => { console.log("CLICK"); }}>{training.duree} minutes</Card>
       </List.Item>
     )}
   />

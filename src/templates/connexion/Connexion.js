@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import './style.css';
 import TrainingList from "../trainingList/TrainingList";
 import userId from "../../myInitObject";
+import { Link } from "react-router-dom";
 
 function Connexion() {
   // React States
@@ -54,6 +55,9 @@ function Connexion() {
               </div>
               <div className="button-container">
                 <input type="submit" />
+              </div>
+              <div>
+                <Link to="/register">S'inscrire</Link>
               </div>
             </form>
           </div>

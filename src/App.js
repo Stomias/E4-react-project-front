@@ -9,6 +9,7 @@ import {
 import TrainingList from './templates/trainingList/TrainingList';
 import TrainingDetail from './templates/trainingDetail/TrainingDetail';
 import Inscription from './templates/inscription/Inscription';
+import TrainingCreation from './templates/trainingCreation/TrainingCreation';
 
 
 const App = () => {

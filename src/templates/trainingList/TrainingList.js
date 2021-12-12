@@ -1,7 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { List, Card } from 'antd';
+import { List, Card, Button } from 'antd';
 import userId from "../../myInitObject";
+import TrainingCreation from '../trainingCreation/TrainingCreation';
+
 
 const TrainingList = () => {
 
@@ -12,14 +14,15 @@ const TrainingList = () => {
     const data = await response.json()
     setTrainings(data)
     console.log(data);
+    console.log(userId.getUserId());
   }
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, []);
+
 
   
-
   return (
    <div className="liste">
     <List
@@ -39,6 +42,7 @@ const TrainingList = () => {
       </List.Item>
     )}
   />
+    <Button type="primary">Créer Entrainement</Button>
   </div>
   )
 };

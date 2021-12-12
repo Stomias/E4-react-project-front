@@ -1,7 +1,7 @@
 import { React, useState } from "react";
-// import ReactDOM from "react-dom";
-
 import './style.css';
+import TrainingList from "../trainingList/TrainingList";
+import userId from "../../myInitObject";
 
 function Connexion() {
   // React States
@@ -20,11 +20,7 @@ function Connexion() {
       body: JSON.stringify({identifiant: uname.value, mdp: pass.value})
     });
 
-    /*
-    - vérifier qu'il ne s'agit pas d'une erreur 404
-    - Si 404 un message est associé ---> l'afficher à l'utilisateur
-    - Sinon utilisateur bon ---> connexion à la page d'entrainements
-    */
+    console.log(response);
 
     if (await response.status !== 200) {
       // You can do your error handling here
@@ -34,37 +30,40 @@ function Connexion() {
     } else {
         // Call the .json() method on your response to get your JSON data
         setIsSubmitted(true);
-        console.log(await response.json());
+        const jsonResponse = await response.json();
+        console.log(jsonResponse.idUser);
+        userId.setUserId(jsonResponse.idUser);
     }
   };
 
 
   // JSX code for login form
   const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" name="uname" required />
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" name="pass" required />
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-      </form>
-    </div>
-  );
-
-  return (
     <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
-        {/* {renderForm} */}
+          <div className="form">
+            <form onSubmit={handleSubmit}>
+              <div className="input-container">
+                <label>Username </label>
+                <input type="text" name="uname" required />
+              </div>
+              <div className="input-container">
+                <label>Password </label>
+                <input type="password" name="pass" required />
+              </div>
+              <div className="button-container">
+                <input type="submit" />
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
+  );
+
+  return (
+    <div>        
+      {isSubmitted ? <TrainingList /> : renderForm} 
     </div>
   );
 }

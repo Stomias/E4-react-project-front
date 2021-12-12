@@ -1,16 +1,18 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { List, Card } from 'antd';
+import userId from "../../myInitObject";
 
 const TrainingList = () => {
 
   const [trainings, setTrainings] = useState([])
 
   const fetchData = async () => {
-    const response = await fetch('http://localhost:3001/trainings/user/1')
+    const response = await fetch("http://localhost:3001/trainings/user/" + userId.getUserId())
     const data = await response.json()
     setTrainings(data)
     console.log(data);
+    console.log(userId.getUserId());
   }
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const TrainingList = () => {
   
 
   return (
-   <div class="liste">
+   <div className="liste">
     <List
     grid={{
       gutter: 16,
@@ -38,16 +40,7 @@ const TrainingList = () => {
       </List.Item>
     )}
   />
-     {/* <div>
-       {trainings.length > 0 && ( 
-         <ul>
-           {trainings.map(training => (
-             <li key={training.idEntrainement}>{training.libelleEntrainement}</li>
-           ))}
-       </ul>
-      )}
-    </div>  */}
-    </div>
+  </div>
   )
 };
 

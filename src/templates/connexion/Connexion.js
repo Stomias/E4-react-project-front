@@ -29,10 +29,10 @@ function Connexion() {
       window.alert(JSON.stringify(erreur.message));
     } else {
         // Call the .json() method on your response to get your JSON data
-        setIsSubmitted(true);
         const jsonResponse = await response.json();
-        console.log(jsonResponse.idUser);
+        // Set userId to the number found
         userId.setUserId(jsonResponse.idUser);
+        setIsSubmitted(true);
     }
   };
 

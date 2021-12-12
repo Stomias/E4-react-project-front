@@ -12,7 +12,6 @@ const TrainingList = () => {
     const data = await response.json()
     setTrainings(data)
     console.log(data);
-    console.log(userId.getUserId());
   }
 
   useEffect(() => {

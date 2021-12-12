@@ -5,7 +5,6 @@ import {
   Form,
   Input,
   Select,
-  Checkbox,
   Button,
   InputNumber
 } from 'antd';
@@ -222,19 +221,6 @@ const Inscription = () => {
           ]}
         >
           <InputNumber />
-        </Form.Item>
-
-        <Form.Item
-          name="agreement"
-          valuePropName="checked"
-          rules={[
-            {
-              validator: (_, value) =>
-                value ? Promise.resolve() : Promise.reject(new Error("Vous devez accepter les conditions générales d'utilisation")),
-            },
-          ]}
-          {...tailFormItemLayout}
-        >
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
